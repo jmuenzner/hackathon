@@ -1,0 +1,6 @@
+.DS_Store
+*.coverprofile
+/resourcefile/rodata.go
+/vendor
+/data-*
+/bin

@@ -1,0 +1,18 @@
+syntax = "proto3";
+package Journeys;
+
+option go_package = "protocol";
+
+/**
+ * A Request that you should document
+ */
+message GetTreeRequest {
+  string instance = 1;
+}
+
+/**
+ * A Response that you should document
+ */
+message GetTreeResponse {
+  repeated string childIds = 1;
+}

@@ -1,0 +1,3 @@
+/* generated protocol buffer and easyjson marshallers */
+*.pb.go
+*.pb_easyjson.go

@@ -1,0 +1,52 @@
+name Journeys
+
+## Requirements for this resource
+requires (
+  banks 0.9.1
+)
+
+## Imports allow a Golang package location to be associated with a
+#  short name. The short names can be used in pipes
+
+# imports (
+#   Cache "github.com/exampleco/examplecachepackage"
+# )
+
+
+## Declare the requests that this resource can receive.
+#  NOTE: The request and reply contents are defined in ./protocol/protocol.proto
+
+# request Create
+request GetTree
+# request Update
+# request Delete
+
+
+## Declare pipes which apply to all storage and migration plans.
+#  Pipes are analagous to middleware in a web server. Three types of pipes
+#  are available:
+#
+#  cache:  intercept requests allowing implementation of any caching strategy
+#  guard:  intercept requests to pre-emptively return errors for invalid
+#          requests, or for backend resources (eg databases) being unavailable
+#  report: hooks for custom reporting
+#
+#  Pipes here at the resource level will run before those defined at the storage
+#  or migration level, otherwise pipes are run in the order they are defined.
+
+# cache pipe Read via Cache.Get
+
+
+## Declare a storage plan called "Legacy". It will be the default storage
+#  plan for this resource. Only one storage plan may be the default, and a
+#  default must be defined.
+
+storage default Legacy (
+
+  ## Add a guard pipe to check the health of the database
+  # guard pipe * via IsDatabaseHealthy
+
+  # Define which of the resource requests this storage plan will allow
+  dispatches GetTree
+  # dispatches Create Update Delete
+)
